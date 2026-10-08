@@ -9,8 +9,8 @@ import { chart, component, axis, slate } from '../config/colors'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface VentaDetalle {
-    Fecha_Emision: string
-    Monto_Renglon_USD: number
+    Fecha: string
+    Total_USD: number
     [key: string]: unknown
 }
 
@@ -45,8 +45,8 @@ function offsetMonth(year: number, month: number, delta: number): { year: number
 function aggregateToDailyMap(data: VentaDetalle[]): Record<string, number> {
     const map: Record<string, number> = {}
     for (const row of data) {
-        const dateKey = row.Fecha_Emision.split('T')[0]
-        map[dateKey] = (map[dateKey] ?? 0) + (row.Monto_Renglon_USD ?? 0)
+        const dateKey = row.Fecha.split('T')[0]
+        map[dateKey] = (map[dateKey] ?? 0) + (row.Total_USD ?? 0)
     }
     for (const k in map) map[k] = Math.round(map[k] * 100) / 100
     return map
