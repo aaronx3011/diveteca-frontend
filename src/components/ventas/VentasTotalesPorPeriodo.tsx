@@ -5,8 +5,8 @@ import { brand, surface, table, search, slate } from '../../config/colors'
 
 // MUI & Icons
 import { DataGrid, GridColDef, useGridApiRef } from '@mui/x-data-grid';
-import { InputBase, Paper, Stack, alpha, Button } from '@mui/material';
-import { Search, X, Eye } from 'lucide-react';
+import { InputBase, Paper, Stack, alpha } from '@mui/material';
+import { Search, X } from 'lucide-react';
 import DownloadCsvButton, { sanitizeFilename } from '../utils/DownloadCsvButton';
 
 interface Props {
@@ -18,7 +18,6 @@ interface Props {
 
 export default function VentasTotalesPorPeriodo({ data, isLoading, period, selectedProductName }: Props) {
     const [searchText, setSearchText] = useState('')
-    const [selectedItem, setSelectedItem] = useState<string | null>(null)
 
     const apiRef = useGridApiRef();
 
@@ -97,7 +96,7 @@ export default function VentasTotalesPorPeriodo({ data, isLoading, period, selec
         >
             <div className="flex items-start justify-between mb-3">
                 <div className="flex flex-col">
-                    <h2 className="uppercase font-display text-2xl font-bold text-brand-navy text-left">
+                    <h2 className="uppercase font-display text-2xl font-bold text-brand-dark text-left">
                         Clientes por Producto
                     </h2>
                     {(() => {
@@ -125,7 +124,7 @@ export default function VentasTotalesPorPeriodo({ data, isLoading, period, selec
                         backgroundColor: surface.white,
                         borderRadius: '10px',
                         border: `1px solid ${table.paperBorder}`,
-                        '&:focus-within': { borderColor: brand.orange }
+                        '&:focus-within': { borderColor: brand.primary }
                     }}
                 >
                     <Search size={16} color={search.iconColor} style={{ marginRight: '8px' }} />

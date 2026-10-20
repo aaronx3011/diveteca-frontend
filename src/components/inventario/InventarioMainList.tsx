@@ -1,14 +1,14 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { DataGrid, useGridApiRef } from '@mui/x-data-grid';
-import { Box, InputBase, Button, Paper, Stack, Menu, MenuItem, alpha, Switch, FormControlLabel } from '@mui/material';
+import { DataGrid, useGridApiRef, type GridColDef } from '@mui/x-data-grid';
+import { Alert, Box, InputBase, Button, Paper, Stack, Menu, MenuItem, alpha, Switch, FormControlLabel } from '@mui/material';
 import { Search, ChevronDown, X } from 'lucide-react';
 import { useInventario } from '../../hooks/useInventario';
 import { useTotalInventario } from '../../hooks/useTotalInventario';
 import DownloadCsvButton, { sanitizeFilename } from '../utils/DownloadCsvButton';
 import { brand, surface, status, table, search, toggle, component, custom } from '../../config/colors';
 
-const columns = [
+const columns: GridColDef[] = [
     { field: 'Ref_Articulo', headerName: 'Ref', flex: 1, minWidth: 100 },
     { field: 'Nombre_Articulo', headerName: 'Artículo', flex: 2, minWidth: 180 },
     { field: 'Codigo_Almacen', headerName: 'Cód. Almacén', flex: 1, minWidth: 100 },
@@ -75,8 +75,8 @@ const columns = [
             if (precio === 0) return 0;
             return ((precio - costo) / precio) * 100;
         },
-        renderCell: (params: any) => {
-            const margen = params.value;
+        renderCell: (params) => {
+            const margen = params.value as number;
             return (
                 <strong style={{ color: margen >= 0 ? status.success : status.error }}>
                     {margen.toFixed(1)}%
@@ -87,7 +87,7 @@ const columns = [
 ];
 
 export default function InventarioMainList() {
-    const { data, isLoading, error } = useInventario();
+    const { data, metadata, isLoading, error } = useInventario();
 
     const [searchText, setSearchText] = useState('');
     const [loteSearch, setLoteSearch] = useState('');
@@ -179,7 +179,7 @@ export default function InventarioMainList() {
                 }}>
             {/* Title */}
                 <div className="flex items-center justify-between px-4 pt-4 pb-2 flex-shrink-0">
-                    <h3 className="text-sm font-bold text-brand-orange uppercase tracking-wider">
+                    <h3 className="text-sm font-bold text-brand-primary uppercase tracking-wider">
                         Inventario
                     </h3>
                     <div className='flex justify-end flex-row items-center gap-1'>
@@ -207,13 +207,13 @@ export default function InventarioMainList() {
                                     }}
                                     size="small"
                                     sx={{
-                                        '& .MuiSwitch-switchBase.Mui-checked': { color: brand.orange },
-                                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { backgroundColor: brand.orange },
+                                        '& .MuiSwitch-switchBase.Mui-checked': { color: brand.primary },
+                                        '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { backgroundColor: brand.primary },
                                     }}
                                 />
                             }
                             label={
-                                <span style={{ fontSize: '0.8rem', fontWeight: 600, color: showVencido ? brand.orange : toggle.labelDefault }}>
+                                <span style={{ fontSize: '0.8rem', fontWeight: 600, color: showVencido ? brand.primary : toggle.labelDefault }}>
                                     Vencido
                                 </span>
                             }
@@ -237,7 +237,7 @@ export default function InventarioMainList() {
                             borderRadius: '12px',
                             border: `1px solid ${table.paperBorder}`,
                             transition: 'all 0.2s',
-                            '&:focus-within': { borderColor: brand.orange, boxShadow: `0 4px 12px ${search.focusShadow}` }
+                            '&:focus-within': { borderColor: brand.primary, boxShadow: `0 4px 12px ${search.focusShadow}` }
                         }}
                     >
                         <Search size={18} color={toggle.labelDefault} style={{ marginRight: '10px' }} />
@@ -264,7 +264,7 @@ export default function InventarioMainList() {
                             borderRadius: '12px',
                             border: `1px solid ${table.paperBorder}`,
                             transition: 'all 0.2s',
-                            '&:focus-within': { borderColor: brand.orange, boxShadow: `0 4px 12px ${search.focusShadow}` }
+                            '&:focus-within': { borderColor: brand.primary, boxShadow: `0 4px 12px ${search.focusShadow}` }
                         }}
                     >
                         <Search size={18} color={toggle.labelDefault} style={{ marginRight: '10px' }} />
@@ -287,7 +287,7 @@ export default function InventarioMainList() {
                                 setLoteSearch('');
                                 setSelectedAlmacen('');
                             }}
-                            sx={{ color: component.clearButtonText, textTransform: 'none', fontWeight: 600, fontSize: '0.85rem', '&:hover': { color: brand.orange }, alignSelf: { xs: 'flex-start', sm: 'center' } }}
+                            sx={{ color: component.clearButtonText, textTransform: 'none', fontWeight: 600, fontSize: '0.85rem', '&:hover': { color: brand.primary }, alignSelf: { xs: 'flex-start', sm: 'center' } }}
                         >
                             Limpiar
                         </Button>
@@ -302,13 +302,13 @@ export default function InventarioMainList() {
                         onClick={(e) => setAnchorElAlmacen(e.currentTarget)}
                         sx={{
                             backgroundColor: surface.white,
-                            borderColor: selectedAlmacen ? brand.orange : table.paperBorder,
-                            color: selectedAlmacen ? brand.orange : custom.cellTextAlt,
+                            borderColor: selectedAlmacen ? brand.primary : table.paperBorder,
+                            color: selectedAlmacen ? brand.primary : custom.cellTextAlt,
                             borderRadius: '10px',
                             textTransform: 'none',
                             fontWeight: 600,
                             px: 2,
-                            '&:hover': { backgroundColor: component.almacenButtonHoverBg, borderColor: brand.orange },
+                            '&:hover': { backgroundColor: component.almacenButtonHoverBg, borderColor: brand.primary },
                             alignSelf: { xs: 'flex-start', sm: 'center' }
                         }}
                     >
@@ -317,6 +317,11 @@ export default function InventarioMainList() {
                 </Stack>
 
                 {/* Table */}
+                {metadata?.possiblyTruncated && (
+                    <Alert severity="warning" sx={{ mx: 2, mb: 2, borderRadius: '12px' }}>
+                        Se muestran como máximo {metadata.rowLimit.toLocaleString('en-US')} registros. Los totales pueden estar incompletos.
+                    </Alert>
+                )}
                 <Paper
                     elevation={0}
                     sx={{
@@ -402,7 +407,7 @@ export default function InventarioMainList() {
                     }}
                 >
                     <Box sx={{ width: { xs: '100%', sm: '100%', lg: 'auto' }, textAlign: { xs: 'center', sm: 'left', lg: 'left' }, mb: { xs: 0.5, sm: 0.5, lg: 0 }, mr: { lg: 'auto' } }}>
-                        <span style={{ color: brand.orange, fontWeight: 800, fontSize: '0.9rem', letterSpacing: '0.3px' }}>TOTALES</span>
+                        <span style={{ color: brand.primary, fontWeight: 800, fontSize: '0.9rem', letterSpacing: '0.3px' }}>TOTALES</span>
                     </Box>
 
                     <Box sx={{ display: { xs: 'none', lg: 'block' }, width: '1px', height: 28, backgroundColor: table.paperBorder }} />

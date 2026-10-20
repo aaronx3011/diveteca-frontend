@@ -245,7 +245,7 @@ export default function StockDetailModal({ open, onClose, filterType, title }: S
                                         <ArrowLeft size={20} />
                                     </button>
                                 )}
-                                <h2 className="text-lg font-bold text-brand-navy">
+                                <h2 className="text-lg font-bold text-brand-dark">
                                     {selectedItem ? selectedItem.Descripcion_Articulo : title}
                                 </h2>
                             </div>
@@ -264,7 +264,7 @@ export default function StockDetailModal({ open, onClose, filterType, title }: S
                                     <span>Vence: {formatDate(selectedItem.Proximo_Vencimiento)}</span>
                                 </div>
 
-                                <h3 className="text-sm font-bold text-brand-navy uppercase tracking-wider">
+                                <h3 className="text-sm font-bold text-brand-dark uppercase tracking-wider">
                                     Lotes ({lotRows.length})
                                 </h3>
                                 {lotsLoading ? (
@@ -300,7 +300,7 @@ export default function StockDetailModal({ open, onClose, filterType, title }: S
 
                                 <button
                                     onClick={handleBack}
-                                    className="w-full mt-2 px-4 py-2.5 rounded-xl bg-brand-orange text-white text-sm font-medium hover:bg-amber-500 transition-colors"
+                                    className="w-full mt-2 px-4 py-2.5 rounded-xl bg-brand-primary text-white text-sm font-medium hover:bg-amber-500 transition-colors"
                                 >
                                     Volver a la lista
                                 </button>

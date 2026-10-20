@@ -159,12 +159,12 @@ export default function VentasUnidadesSection({
                         minWidth: 'auto',
                         p: '4px',
                         borderRadius: '8px',
-                        backgroundColor: selectedProduct === params.row.Codigo_Articulo ? brand.orange : 'transparent',
-                        borderColor: selectedProduct === params.row.Codigo_Articulo ? brand.orange : slate[200],
+                        backgroundColor: selectedProduct === params.row.Codigo_Articulo ? brand.primary : 'transparent',
+                        borderColor: selectedProduct === params.row.Codigo_Articulo ? brand.primary : slate[200],
                         color: selectedProduct === params.row.Codigo_Articulo ? surface.white : slate[500],
                         '&:hover': {
-                            backgroundColor: selectedProduct === params.row.Codigo_Articulo ? brand.orangeHover : slate[100],
-                            borderColor: selectedProduct === params.row.Codigo_Articulo ? brand.orangeHover : slate[300],
+                            backgroundColor: selectedProduct === params.row.Codigo_Articulo ? brand.primaryHover : slate[100],
+                            borderColor: selectedProduct === params.row.Codigo_Articulo ? brand.primaryHover : slate[300],
                         }
                     }}
                 >
@@ -200,7 +200,7 @@ export default function VentasUnidadesSection({
         >
             <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="flex items-baseline gap-3">
-                    <h2 className="uppercase font-display text-2xl font-bold text-brand-navy text-left">
+                    <h2 className="uppercase font-display text-2xl font-bold text-brand-dark text-left">
                         Ventas por Producto Mensual
                     </h2>
                     {period && (
@@ -219,7 +219,7 @@ export default function VentasUnidadesSection({
                         value={fromYear}
                         onChange={e => setFromYear(e.target.value)}
                         disabled={isLoadingFechas}
-                        className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs outline-none focus:ring-2 focus:ring-brand-orange/20 cursor-pointer disabled:opacity-50"
+                        className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs outline-none focus:ring-2 focus:ring-brand-primary/20 cursor-pointer disabled:opacity-50"
                     >
                         <option value="">Año</option>
                         {availableFromYears.map((y: any) => <option key={y} value={y}>{y}</option>)}
@@ -228,7 +228,7 @@ export default function VentasUnidadesSection({
                         value={fromMonth}
                         onChange={e => setFromMonth(e.target.value)}
                         disabled={!fromYear || isLoadingFechas}
-                        className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs outline-none focus:ring-2 focus:ring-brand-orange/20 cursor-pointer disabled:opacity-50"
+                        className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs outline-none focus:ring-2 focus:ring-brand-primary/20 cursor-pointer disabled:opacity-50"
                     >
                         <option value="">Mes</option>
                         {availableFromMonths.map((m: any) => <option key={m} value={m}>{MONTH_NAMES[m - 1]}</option>)}
@@ -241,7 +241,7 @@ export default function VentasUnidadesSection({
                         value={toYear}
                         onChange={e => setToYear(e.target.value)}
                         disabled={isLoadingFechas}
-                        className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs outline-none focus:ring-2 focus:ring-brand-orange/20 cursor-pointer disabled:opacity-50"
+                        className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs outline-none focus:ring-2 focus:ring-brand-primary/20 cursor-pointer disabled:opacity-50"
                     >
                         <option value="">Año</option>
                         {availableToYears.map((y: any) => <option key={y} value={y}>{y}</option>)}
@@ -250,7 +250,7 @@ export default function VentasUnidadesSection({
                         value={toMonth}
                         onChange={e => setToMonth(e.target.value)}
                         disabled={!toYear || isLoadingFechas}
-                        className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs outline-none focus:ring-2 focus:ring-brand-orange/20 cursor-pointer disabled:opacity-50"
+                        className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs outline-none focus:ring-2 focus:ring-brand-primary/20 cursor-pointer disabled:opacity-50"
                     >
                         <option value="">Mes</option>
                         {availableToMonths.map((m: any) => <option key={m} value={m}>{MONTH_NAMES[m - 1]}</option>)}

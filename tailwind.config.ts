@@ -7,9 +7,10 @@ export default {
         extend: {
             colors: {
                 brand: {
-                    orange: brand.orange,
-                    navy: brand.navy,
-                    'navy-light': brand.navyLight,
+                    primary: brand.primary,
+                    'primary-light': brand.secondary,
+                    dark: brand.dark,
+                    'dark-light': brand.darkLight,
                 },
                 surface: {
                     DEFAULT: surface.white,
@@ -28,6 +29,9 @@ export default {
                     800: slate[800],
                     900: slate[900],
                 },
+            },
+            boxShadow: {
+                'brand-active': `0 4px 14px ${brand.primary}59`,
             },
             fontFamily: {
                 poppins: ["Poppins", "sans-serif"],

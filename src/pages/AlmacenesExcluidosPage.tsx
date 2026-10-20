@@ -76,7 +76,7 @@ export default function AlmacenesExcluidosPage() {
                 animate={{ opacity: 1 }}
                 className="flex-1 flex items-center justify-center"
             >
-                <div className="animate-spin w-8 h-8 border-2 border-brand-orange border-t-transparent rounded-full" />
+                <div className="animate-spin w-8 h-8 border-2 border-brand-primary border-t-transparent rounded-full" />
             </motion.main>
         )
     }
@@ -88,7 +88,7 @@ export default function AlmacenesExcluidosPage() {
             transition={{ duration: 0.3 }}
             className="flex-1 overflow-y-auto p-4 lg:p-6"
         >
-            <h1 className="text-xl sm:text-2xl font-bold text-brand-navy mb-6">Almacenes Excluidos</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-brand-dark mb-6">Almacenes Excluidos</h1>
 
             {error && (
                 <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm">
@@ -102,7 +102,7 @@ export default function AlmacenesExcluidosPage() {
             </p>
 
             <div className="kpi-card mb-6">
-                <h2 className="text-sm font-bold text-brand-orange uppercase tracking-wider mb-3">Agregar exclusión</h2>
+                <h2 className="text-sm font-bold text-brand-primary uppercase tracking-wider mb-3">Agregar exclusión</h2>
                 <Autocomplete
                     options={disponibles}
                     value={selectedValue}
@@ -142,7 +142,7 @@ export default function AlmacenesExcluidosPage() {
 
             <div className="kpi-card">
                 <div className="flex items-center justify-between mb-3">
-                    <h2 className="text-sm font-bold text-brand-orange uppercase tracking-wider">Excluidos</h2>
+                    <h2 className="text-sm font-bold text-brand-primary uppercase tracking-wider">Excluidos</h2>
                     <span className="text-xs text-slate-400 font-medium">{excludedAlmacenes.length} almacenes</span>
                 </div>
 

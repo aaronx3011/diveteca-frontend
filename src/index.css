@@ -15,7 +15,7 @@
     font-family: 'poppins'
   }
   body {
-    @apply bg-surface-page text-brand-navy;
+    @apply bg-surface-page text-brand-dark;
     -webkit-font-smoothing: antialiased;
 
   }
@@ -35,14 +35,13 @@
 @layer components {
   .nav-link {
     @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
-           transition-all duration-200 cursor-pointer select-none text-brand-navy;
+           transition-all duration-200 cursor-pointer select-none text-brand-dark;
   }
   .nav-link:hover {
     @apply bg-surface-page;
   }
   .nav-link.active {
-    @apply bg-brand-orange text-white shadow-md;
-    box-shadow: 0 4px 14px rgba(231, 177, 10, 0.35);
+    @apply bg-brand-primary text-white shadow-brand-active;
   }
   .kpi-card {
     @apply bg-white rounded-2xl p-5 border border-slate-100;

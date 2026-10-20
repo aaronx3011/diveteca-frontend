@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useLayoutEffect, type ReactNode } from 'react'
 
 interface amountCardProps {
     titlle: string,
@@ -6,7 +6,7 @@ interface amountCardProps {
     value2?: string,
 }
 
-function ShrinkText({ children, className }: { children: string; className?: string }) {
+function ShrinkText({ children, className }: { children: ReactNode; className?: string }) {
     const ref = useRef<HTMLParagraphElement>(null);
 
     useLayoutEffect(() => {
@@ -50,11 +50,11 @@ export default function amountCard({ titlle, value, value2 = '' }: amountCardPro
                 {titlle}
             </p>
             <div className="flex flex-col sm:flex-row sm:flex-wrap items-end sm:items-center justify-end gap-1 sm:gap-2">
-                <ShrinkText className="font-display text-lg sm:text-xl lg:text-3xl font-bold text-brand-orange mt-2 leading-tight text-right">
+                <ShrinkText className="font-display text-lg sm:text-xl lg:text-3xl font-bold text-brand-primary mt-2 leading-tight text-right">
                     {value}$
                 </ShrinkText>
                 {value2 === '' ? (<></>) : (
-                    <ShrinkText className="font-display text-lg sm:text-xl lg:text-3xl font-semibold text-brand-navy-light mt-2 leading-tight text-right">
+                    <ShrinkText className="font-display text-lg sm:text-xl lg:text-3xl font-semibold text-brand-dark-light mt-2 leading-tight text-right">
                         {value2}u
                     </ShrinkText>
                 )}

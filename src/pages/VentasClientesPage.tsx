@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart } from '@mui/x-charts/LineChart';
 import { ChevronDown } from 'lucide-react';
@@ -34,13 +34,6 @@ export default function VentasClientesPage() {
         if (!ventasAnuales) return [];
         return [...ventasAnuales]
             .sort((a, b) => b.Total_USD - a.Total_USD)
-            .slice(0, 5);
-    }, [ventasAnuales]);
-
-    const bottom5Clientes = useMemo(() => {
-        if (!ventasAnuales) return [];
-        return [...ventasAnuales]
-            .sort((a, b) => a.Total_USD - b.Total_USD)
             .slice(0, 5);
     }, [ventasAnuales]);
 
@@ -131,7 +124,7 @@ export default function VentasClientesPage() {
                                                     '& .MuiOutlinedInput-root': {
                                                         '& fieldset': { borderColor: slate[200] },
                                                         '&:hover fieldset': { borderColor: slate[300] },
-                                                        '&.Mui-focused fieldset': { borderColor: brand.orange }
+                                                        '&.Mui-focused fieldset': { borderColor: brand.primary }
                                                     }
                                                 }}
                                             />
@@ -143,7 +136,7 @@ export default function VentasClientesPage() {
                                         value={selectedYear}
                                         onChange={(e) => setSelectedYear(e.target.value)}
                                         disabled={availableYears.length === 0}
-                                        className="appearance-none bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-full pl-3 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 font-medium h-8 disabled:opacity-50"
+                                        className="appearance-none bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-full pl-3 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 font-medium h-8 disabled:opacity-50"
                                     >
                                         {availableYears.length === 0 && <option value="">Año</option>}
                                         {availableYears.map(y => <option key={y} value={y}>{y}</option>)}
@@ -163,7 +156,7 @@ export default function VentasClientesPage() {
                                         xAxis={[{
                                             scaleType: 'point',
                                             dataKey: 'x',
-                                            tickLabelStyle: { fill: axis.tickLabel, fontSize: { xs: 8, lg: 11 } },
+                                            tickLabelStyle: { fill: axis.tickLabel, fontSize: { xs: 8, lg: 11 } as any },
                                             sx: {
                                                 '& .MuiChartsAxis-line': { stroke: 'transparent' },
                                                 '& .MuiChartsAxis-tick': { stroke: 'transparent' }
@@ -171,7 +164,7 @@ export default function VentasClientesPage() {
                                         }]}
                                         yAxis={[{
                                             valueFormatter: (v) => v.toLocaleString('es-ES'),
-                                            tickLabelStyle: { fill: axis.tickLabel, fontSize: { xs: 8, lg: 11 } },
+                                            tickLabelStyle: { fill: axis.tickLabel, fontSize: { xs: 8, lg: 11 } as any },
                                             sx: {
                                                 '& .MuiChartsAxis-line': { stroke: 'transparent' },
                                                 '& .MuiChartsAxis-tick': { stroke: 'transparent' }
@@ -187,7 +180,7 @@ export default function VentasClientesPage() {
                                             },
                                             {
                                                 dataKey: 'usd',
-                                                color: brand.orange,
+                                                color: brand.primary,
                                                 curve: 'monotoneX',
                                                 showMark: false,
                                                 area: false,
@@ -208,11 +201,11 @@ export default function VentasClientesPage() {
                             <div className='flex items-center justify-center pt-2'>
                                 <div className="flex items-center gap-4">
                                     <span className="flex items-center gap-1.5 text-xs text-slate-500">
-                                        <span className="w-5 h-0.5 bg-brand-navy inline-block rounded" />
+                                        <span className="w-5 h-0.5 bg-brand-dark inline-block rounded" />
                                         Numero de unidades
                                     </span>
                                     <span className="flex items-center gap-1.5 text-xs text-slate-500">
-                                        <span className="w-5 h-0.5 bg-brand-orange inline-block rounded" />
+                                        <span className="w-5 h-0.5 bg-brand-primary inline-block rounded" />
                                         Valor en USD
                                     </span>
                                 </div>
@@ -269,7 +262,7 @@ export default function VentasClientesPage() {
                                                     '& .MuiOutlinedInput-root': {
                                                         '& fieldset': { borderColor: slate[200] },
                                                         '&:hover fieldset': { borderColor: slate[300] },
-                                                        '&.Mui-focused fieldset': { borderColor: brand.orange }
+                                                        '&.Mui-focused fieldset': { borderColor: brand.primary }
                                                     }
                                                 }}
                                             />
@@ -281,7 +274,7 @@ export default function VentasClientesPage() {
                                         value={selectedYear}
                                         onChange={(e) => setSelectedYear(e.target.value)}
                                         disabled={availableYears.length === 0}
-                                        className="appearance-none bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-full pl-3 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 font-medium h-8 disabled:opacity-50"
+                                        className="appearance-none bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-full pl-3 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 font-medium h-8 disabled:opacity-50"
                                     >
                                         {availableYears.length === 0 && <option value="">Año</option>}
                                         {availableYears.map(y => <option key={y} value={y}>{y}</option>)}
@@ -301,7 +294,7 @@ export default function VentasClientesPage() {
                                         xAxis={[{
                                             scaleType: 'point',
                                             dataKey: 'x',
-                                            tickLabelStyle: { fill: axis.tickLabel, fontSize: { xs: 8, lg: 11 } },
+                                            tickLabelStyle: { fill: axis.tickLabel, fontSize: { xs: 8, lg: 11 } as any },
                                             sx: {
                                                 '& .MuiChartsAxis-line': { stroke: 'transparent' },
                                                 '& .MuiChartsAxis-tick': { stroke: 'transparent' }
@@ -309,7 +302,7 @@ export default function VentasClientesPage() {
                                         }]}
                                         yAxis={[{
                                             valueFormatter: (v) => v.toLocaleString('es-ES'),
-                                            tickLabelStyle: { fill: axis.tickLabel, fontSize: { xs: 8, lg: 11 } },
+                                            tickLabelStyle: { fill: axis.tickLabel, fontSize: { xs: 8, lg: 11 } as any },
                                             sx: {
                                                 '& .MuiChartsAxis-line': { stroke: 'transparent' },
                                                 '& .MuiChartsAxis-tick': { stroke: 'transparent' }
@@ -325,7 +318,7 @@ export default function VentasClientesPage() {
                                             },
                                             {
                                                 dataKey: 'usd',
-                                                color: brand.orange,
+                                                color: brand.primary,
                                                 curve: 'monotoneX',
                                                 showMark: false,
                                                 area: false,
@@ -346,11 +339,11 @@ export default function VentasClientesPage() {
                             <div className='flex items-center justify-center pt-2'>
                                 <div className="flex items-center gap-4">
                                     <span className="flex items-center gap-1.5 text-xs text-slate-500">
-                                        <span className="w-5 h-0.5 bg-brand-navy inline-block rounded" />
+                                        <span className="w-5 h-0.5 bg-brand-dark inline-block rounded" />
                                         Numero de unidades
                                     </span>
                                     <span className="flex items-center gap-1.5 text-xs text-slate-500">
-                                        <span className="w-5 h-0.5 bg-brand-orange inline-block rounded" />
+                                        <span className="w-5 h-0.5 bg-brand-primary inline-block rounded" />
                                         Valor en USD
                                     </span>
                                 </div>

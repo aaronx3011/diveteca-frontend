@@ -11,7 +11,6 @@ import MenorVentaTable from '../components/ventas/MenorVentaTable'
 import MayorVentaTable from '../components/ventas/MayorVentaTable'
 import ArticuloVsVentas from '../components/ventas/ClientesDonut'
 import TopProductosMasVendidos from '../components/ventas/TopProductosMasVendidos'
-import TopProductosMenosVendidos from '../components/ventas/TopProductosMenosVendidos'
 
 import { chart, brand, slate } from '../config/colors'
 
@@ -69,7 +68,7 @@ export default function VentasPage() {
             const othersValue = totalVentas - selectedValue;
 
             donutData = [
-                { id: 0, label: selectedItem.Descripcion_Articulo || selectedItem.Ref_Articulo || selectedItem.Codigo_Articulo, value: selectedValue, color: brand.orange },
+                { id: 0, label: selectedItem.Descripcion_Articulo || selectedItem.Ref_Articulo || selectedItem.Codigo_Articulo, value: selectedValue, color: brand.primary },
                 { id: 1, label: 'Otros Productos', value: othersValue, color: slate[900] }
             ];
         }
@@ -101,7 +100,7 @@ export default function VentasPage() {
             let colorIndex = 0;
             return rows.map((item, i) => {
                 const isSelected = item.Codigo_Articulo === selectedProduct;
-                const color = isSelected ? brand.orange : chart.otherProducts[colorIndex++];
+                const color = isSelected ? brand.primary : chart.otherProducts[colorIndex++];
                 return {
                     id: i,
                     label: item.Descripcion_Articulo || item.Ref_Articulo || item.Codigo_Articulo,

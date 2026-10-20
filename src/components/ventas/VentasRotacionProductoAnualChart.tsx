@@ -8,7 +8,7 @@ const MONTH_NAMES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Se
 const MONTH_KEYS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'] as const;
 
 const BLUE_PALETTE = chart.bluePalette;
-const ACTIVE_ORANGE = brand.orangeSecondary;
+const ACTIVE_ORANGE = brand.primarySecondary;
 
 interface VentasRotacionProductoAnualChartProps {
     productHistory: VentasMesesFrontend[];

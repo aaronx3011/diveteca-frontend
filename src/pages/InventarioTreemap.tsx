@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Treemap, ResponsiveContainer, Tooltip } from 'recharts';
-import { Select, MenuItem, SelectChangeEvent, Paper, alpha } from '@mui/material';
+import { Alert, Select, MenuItem, SelectChangeEvent, Paper, alpha } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useInventarioCompleto } from '../hooks/useInventarioCompleto';
 import { chart, component, slate, table, surface, custom } from '../config/colors';
@@ -137,7 +137,7 @@ function CustomTooltip({ active, payload, viewMode }: {
 }
 
 export default function InventarioTreemap() {
-    const { data, isLoading, error } = useInventarioCompleto();
+    const { data, metadata, isLoading, error } = useInventarioCompleto();
     const [viewMode, setViewMode] = useState<ViewMode>('units');
 
     const warehouseRows = useMemo(() => {
@@ -359,6 +359,11 @@ export default function InventarioTreemap() {
             transition={{ duration: 0.3 }}
             className="flex-1 overflow-y-auto p-4 lg:p-6"
         >
+            {metadata?.possiblyTruncated && (
+                <Alert severity="warning" sx={{ mb: 2, borderRadius: '12px' }}>
+                    El mapa puede estar incompleto porque el reporte alcanzó {metadata.rowLimit.toLocaleString('en-US')} registros.
+                </Alert>
+            )}
             {/* Chart Card */}
             <motion.div
                 initial={{ opacity: 0, y: 24 }}
@@ -368,7 +373,7 @@ export default function InventarioTreemap() {
             >
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
                     <div>
-                        <h2 className="uppercase font-display text-xl lg:text-2xl font-bold text-brand-navy text-left">
+                        <h2 className="uppercase font-display text-xl lg:text-2xl font-bold text-brand-dark text-left">
                             Inventario
                         </h2>
                         <p className="text-[11px] text-slate-400 font-medium">
@@ -437,7 +442,7 @@ export default function InventarioTreemap() {
             >
                 <div className="flex items-center justify-between mb-4">
                     <div>
-                        <h2 className="uppercase font-display text-xl lg:text-2xl font-bold text-brand-navy">
+                        <h2 className="uppercase font-display text-xl lg:text-2xl font-bold text-brand-dark">
                             {tableTitleMap[viewMode]}
                         </h2>
                         <p className="text-[11px] text-slate-400 font-medium">
@@ -511,7 +516,7 @@ export default function InventarioTreemap() {
                 </Paper>
 
                 <div className="flex flex-wrap items-center justify-between gap-3 px-2 py-3 border-t border-slate-100">
-                    <span className="text-[11px] font-bold text-brand-orange uppercase tracking-wide">Totales</span>
+                    <span className="text-[11px] font-bold text-brand-primary uppercase tracking-wide">Totales</span>
                     <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
                         <span>
                             Unidades:{' '}

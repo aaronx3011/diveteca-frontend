@@ -24,10 +24,10 @@ export const variacionMensual: VariacionMensual[] = [
 ]
 
 export const kpiData: KpiData[] = [
-    { label: 'Inventario Total', value: '$ 368.258', accent: 'orange' },
-    { label: 'Stock Critico', value: '$ 68.258', accent: 'orange' },
-    { label: 'Stock Bajo', value: '$ 36.258' },
-    { label: 'Cobertura Promedio', value: '14 Meses' },
+    { label: 'Inventario Total', value: '$ 368.258', accent: 'orange', type: 'amount' },
+    { label: 'Stock Critico', value: '$ 68.258', accent: 'orange', type: 'amount' },
+    { label: 'Stock Bajo', value: '$ 36.258', type: 'amount' },
+    { label: 'Cobertura Promedio', value: '14 Meses', type: 'amount' },
 ]
 
 

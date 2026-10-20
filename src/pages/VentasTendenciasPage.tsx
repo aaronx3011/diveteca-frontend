@@ -73,17 +73,7 @@ function getTextColor(bg: string): string {
 function MonthCalendar() {
     const today = new Date()
 
-    const { data: fechasDisponibles, isLoading: loadingFechas } = useFechasDisponibles()
-
-    const availableMonths = useMemo(() => {
-        const set = new Set<string>()
-        for (const f of fechasDisponibles) {
-            if (f.year !== undefined && f.month !== undefined) {
-                set.add(`${f.year}-${f.month}`)
-            }
-        }
-        return set
-    }, [fechasDisponibles])
+    const { isLoading: loadingFechas } = useFechasDisponibles()
 
     const [viewYear, setViewYear] = useState(today.getFullYear())
     const [viewMonth, setViewMonth] = useState(today.getMonth())
@@ -339,7 +329,7 @@ export default function HeatmapSummaryView() {
                 transition={{ delay: 0.32, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="chart-card"
             >
-                <h3 className="text-l font-bold text-brand-orange uppercase mb-4">Ventas Diarias</h3>
+                <h3 className="text-l font-bold text-brand-primary uppercase mb-4">Ventas Diarias</h3>
                 <div className="px-2">
                     <MonthCalendar />
                 </div>

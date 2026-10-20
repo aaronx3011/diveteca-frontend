@@ -24,7 +24,7 @@ export default function VentasTotalesPorPeriodoChart({ product }: VentasTotalesP
                         {
                             data: metasDiarias,
                             label: 'Monto Vendido',
-                            color: brand.orangeSecondary,
+                            color: brand.primarySecondary,
                             showMark: false,
                             area: true,
                             curve: 'catmullRom',
@@ -60,7 +60,7 @@ export default function VentasTotalesPorPeriodoChart({ product }: VentasTotalesP
                 <div className='flex items-center justify-center'>
                     <div className="flex items-center gap-4">
                         <span className="flex items-center gap-1.5 text-xs text-slate-500">
-                            <span className="w-5 h-0.5 bg-brand-orange inline-block rounded" />
+                            <span className="w-5 h-0.5 bg-brand-primary inline-block rounded" />
                             Periodo seleccionado
                         </span>
                     </div>

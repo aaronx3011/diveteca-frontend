@@ -53,11 +53,11 @@ export default function NotificationsDropdown() {
                 whileTap={{ scale: 0.93 }}
                 onClick={() => setOpen(prev => !prev)}
                 className="relative w-11 h-11 rounded-full bg-surface-page flex items-center justify-center
-                    text-brand-navy hover:bg-surface-page transition-colors flex-shrink-0"
+                    text-brand-dark hover:bg-surface-page transition-colors flex-shrink-0"
             >
                 <BellIcon size={24} />
                 {totalCount > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] rounded-full bg-brand-orange text-white text-[10px] font-bold flex items-center justify-center border-2 border-white px-1">
+                    <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] rounded-full bg-brand-primary text-white text-[10px] font-bold flex items-center justify-center border-2 border-white px-1">
                         {totalCount > 9 ? '9+' : totalCount}
                     </span>
                 )}
@@ -73,7 +73,7 @@ export default function NotificationsDropdown() {
                         className="absolute left-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-slate-100 z-50 overflow-hidden"
                     >
                         <div className="p-4 border-b border-slate-100">
-                            <h3 className="text-sm font-bold text-brand-navy">Notificaciones</h3>
+                            <h3 className="text-sm font-bold text-brand-dark">Notificaciones</h3>
                         </div>
 
                         <div className="max-h-[400px] overflow-y-auto">
@@ -93,13 +93,13 @@ export default function NotificationsDropdown() {
                                                     </span>
                                                     <span className="text-[10px] text-slate-400 font-mono">{note.version}</span>
                                                 </div>
-                                                <p className="text-xs font-medium text-brand-navy truncate">{note.title}</p>
+                                                <p className="text-xs font-medium text-brand-dark truncate">{note.title}</p>
                                             </button>
                                         ))}
                                     </div>
                                     <button
                                         onClick={() => { setOpen(false); navigate('/configuration/patch-notes'); }}
-                                        className="mt-1 w-full text-xs text-brand-orange font-medium text-center py-1.5 hover:underline"
+                                        className="mt-1 w-full text-xs text-brand-primary font-medium text-center py-1.5 hover:underline"
                                     >
                                         Ver todas →
                                     </button>
@@ -126,7 +126,7 @@ export default function NotificationsDropdown() {
                                                         {STATUS_LABELS[issue.status] ?? issue.status}
                                                     </span>
                                                 </div>
-                                                <p className="text-xs font-medium text-brand-navy truncate">{issue.title}</p>
+                                                <p className="text-xs font-medium text-brand-dark truncate">{issue.title}</p>
                                                 <p className="text-[10px] text-slate-400 line-clamp-2">{issue.description}</p>
                                                 <p className="text-[10px] text-slate-400 mt-0.5">{issue.reporter_name}</p>
                                             </button>
@@ -134,7 +134,7 @@ export default function NotificationsDropdown() {
                                     </div>
                                     <button
                                         onClick={() => { setOpen(false); navigate('/configuration/issues'); }}
-                                        className="mt-1 w-full text-xs text-brand-orange font-medium text-center py-1.5 hover:underline"
+                                        className="mt-1 w-full text-xs text-brand-primary font-medium text-center py-1.5 hover:underline"
                                     >
                                         Ver todas →
                                     </button>

@@ -119,7 +119,7 @@ export interface InventarioItem {
 }
 
 export interface InventoryMetadata {
-    source: 'inventory-movement-report';
+    source: 'inventory-movement-report' | 'target-inventory-view' | 'target-stock-report';
     generatedAt: string;
     rowLimit: number;
     possiblyTruncated: boolean;

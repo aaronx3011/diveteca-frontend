@@ -14,7 +14,7 @@ export default function PrecioVsRotacion() {
             whileHover={{ boxShadow: `0 8px 28px ${component.cardShadow}` }}
             className="chart-card"
         >
-            <h3 className="text-sm font-bold text-brand-orange mb-3">
+            <h3 className="text-sm font-bold text-brand-primary mb-3">
                 Relacion Precio vs Rotacion
             </h3>
 

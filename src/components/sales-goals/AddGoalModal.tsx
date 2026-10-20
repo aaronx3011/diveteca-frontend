@@ -58,7 +58,7 @@ export default function AddGoalModal({ open, onClose, onSuccess }: AddGoalModalP
                         className="relative bg-white rounded-2xl p-6 w-full max-w-sm mx-4 shadow-xl"
                     >
                         <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-lg font-bold text-brand-navy">Crear Meta</h2>
+                            <h2 className="text-lg font-bold text-brand-dark">Crear Meta</h2>
                             <button onClick={onClose} className="p-1 rounded-lg hover:bg-surface-page text-slate-400">
                                 <X size={20} />
                             </button>
@@ -70,7 +70,7 @@ export default function AddGoalModal({ open, onClose, onSuccess }: AddGoalModalP
 
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-brand-navy mb-1">Monto ($)</label>
+                                <label className="block text-sm font-medium text-brand-dark mb-1">Monto ($)</label>
                                 <input
                                     type="number"
                                     step="0.01"
@@ -78,7 +78,7 @@ export default function AddGoalModal({ open, onClose, onSuccess }: AddGoalModalP
                                     value={goalAmount}
                                     onChange={(e) => setGoalAmount(e.target.value)}
                                     placeholder="50000.00"
-                                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/30 focus:border-brand-orange"
+                                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary"
                                     autoFocus
                                 />
                             </div>
@@ -91,14 +91,14 @@ export default function AddGoalModal({ open, onClose, onSuccess }: AddGoalModalP
                                 <button
                                     type="button"
                                     onClick={onClose}
-                                    className="w-full sm:flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-brand-navy hover:bg-surface-page transition-colors"
+                                    className="w-full sm:flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-brand-dark hover:bg-surface-page transition-colors"
                                 >
                                     Cancelar
                                 </button>
                                 <button
                                     type="submit"
                                     disabled={saving}
-                                    className="w-full sm:flex-1 px-4 py-2.5 rounded-xl bg-brand-orange text-white text-sm font-medium hover:bg-amber-500 transition-colors disabled:opacity-50"
+                                    className="w-full sm:flex-1 px-4 py-2.5 rounded-xl bg-brand-primary text-white text-sm font-medium hover:bg-amber-500 transition-colors disabled:opacity-50"
                                 >
                                     {saving ? 'Guardando...' : 'Guardar'}
                                 </button>

@@ -1,14 +1,14 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { DataGrid, useGridApiRef } from '@mui/x-data-grid';
-import { Box, InputBase, Button, Paper, Stack, alpha } from '@mui/material';
+import { Alert, Box, InputBase, Button, Paper, Stack, alpha } from '@mui/material';
 import { Search, X } from 'lucide-react';
 import { useInventarioPorProducto } from '../hooks/useInventarioPorProducto';
 import DownloadCsvButton, { sanitizeFilename } from '../components/utils/DownloadCsvButton';
 import { brand, surface, status, table, search, component, custom, slate } from '../config/colors';
 
 export default function InventarioPorProductoPage() {
-    const { data, isLoading } = useInventarioPorProducto();
+    const { data, metadata, isLoading } = useInventarioPorProducto();
     const [searchText, setSearchText] = useState('');
 
     const rows = useMemo(() =>
@@ -170,7 +170,7 @@ export default function InventarioPorProductoPage() {
                 >
                     <div className="flex items-center justify-between px-4 pt-4 pb-2 flex-shrink-0">
                         <div>
-                            <h3 className="text-sm font-bold text-brand-orange uppercase tracking-wider">
+                            <h3 className="text-sm font-bold text-brand-primary uppercase tracking-wider">
                                 Productos
                             </h3>
                             <p className="text-[11px] text-slate-400 font-medium">
@@ -192,7 +192,7 @@ export default function InventarioPorProductoPage() {
                                 borderRadius: '12px',
                                 border: `1px solid ${table.paperBorder}`,
                                 transition: 'all 0.2s',
-                                '&:focus-within': { borderColor: brand.orange, boxShadow: `0 4px 12px ${search.focusShadow}` }
+                                '&:focus-within': { borderColor: brand.primary, boxShadow: `0 4px 12px ${search.focusShadow}` }
                             }}
                         >
                             <Search size={18} color={component.noValue} style={{ marginRight: '10px' }} />
@@ -211,12 +211,18 @@ export default function InventarioPorProductoPage() {
                             <Button
                                 startIcon={<X size={16} />}
                                 onClick={() => setSearchText('')}
-                                sx={{ color: component.clearButtonText, textTransform: 'none', fontWeight: 600, fontSize: '0.85rem', '&:hover': { color: brand.orange }, alignSelf: { xs: 'flex-start', sm: 'center' } }}
+                                sx={{ color: component.clearButtonText, textTransform: 'none', fontWeight: 600, fontSize: '0.85rem', '&:hover': { color: brand.primary }, alignSelf: { xs: 'flex-start', sm: 'center' } }}
                             >
                                 Limpiar
                             </Button>
                         )}
                     </Stack>
+
+                    {metadata?.possiblyTruncated && (
+                        <Alert severity="warning" sx={{ mx: 2, mb: 2, borderRadius: '12px' }}>
+                            El reporte base alcanzó el límite de {metadata.rowLimit.toLocaleString('en-US')} registros. Los agregados pueden estar incompletos.
+                        </Alert>
+                    )}
 
                     <Paper
                         elevation={0}
@@ -300,7 +306,7 @@ export default function InventarioPorProductoPage() {
                         }}
                     >
                         <Box sx={{ width: { xs: '100%', sm: '100%', lg: 'auto' }, textAlign: { xs: 'center', sm: 'left', lg: 'left' }, mb: { xs: 0.5, sm: 0.5, lg: 0 }, mr: { lg: 'auto' } }}>
-                            <span style={{ color: brand.orange, fontWeight: 800, fontSize: '0.9rem', letterSpacing: '0.3px' }}>TOTALES</span>
+                            <span style={{ color: brand.primary, fontWeight: 800, fontSize: '0.9rem', letterSpacing: '0.3px' }}>TOTALES</span>
                         </Box>
 
                         <Box sx={{ display: { xs: 'none', lg: 'block' }, width: '1px', height: 28, backgroundColor: table.paperBorder }} />

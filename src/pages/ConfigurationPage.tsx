@@ -73,7 +73,7 @@ export default function ConfigurationPage() {
             transition={{ duration: 0.3 }}
             className="flex-1 overflow-y-auto p-4 lg:p-6"
         >
-            <h1 className="text-xl sm:text-2xl font-bold text-brand-navy mb-6">Metas de Venta</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-brand-dark mb-6">Metas de Venta</h1>
 
             {!isAdmin && (
                 <motion.div
@@ -85,7 +85,7 @@ export default function ConfigurationPage() {
                     <div className="flex items-center gap-3 py-6">
                         <ShieldBan size={24} className="text-slate-300" />
                         <div>
-                            <h2 className="text-sm font-semibold text-brand-navy">Sección restringida</h2>
+                            <h2 className="text-sm font-semibold text-brand-dark">Sección restringida</h2>
                             <p className="text-xs text-slate-400 mt-0.5">Solo los administradores pueden gestionar las metas de ventas.</p>
                         </div>
                     </div>
@@ -100,7 +100,7 @@ export default function ConfigurationPage() {
                 transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="kpi-card mb-6"
             >
-                <h2 className="text-sm sm:text-base font-bold text-brand-orange uppercase mb-4">Meta Actual</h2>
+                <h2 className="text-sm sm:text-base font-bold text-brand-primary uppercase mb-4">Meta Actual</h2>
 
                 {loading && <p className="text-sm text-slate-500">Cargando...</p>}
                 {error && <p className="text-sm text-red-500">{error}</p>}
@@ -110,7 +110,7 @@ export default function ConfigurationPage() {
                         <p className="text-slate-500 mb-4">No hay meta para {MONTH_NAMES[currentMonth - 1]} {currentYear}</p>
                         <button
                             onClick={() => setAddModalOpen(true)}
-                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-orange text-white text-sm font-medium hover:bg-amber-500 transition-colors"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-primary text-white text-sm font-medium hover:bg-amber-500 transition-colors"
                         >
                             <Plus size={16} />
                             Crear Meta
@@ -122,7 +122,7 @@ export default function ConfigurationPage() {
                     <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4">
                         <div className="w-full sm:w-auto sm:flex-1">
                             <label className="block text-xs text-slate-500 mb-1">Periodo</label>
-                            <p className="text-sm font-medium text-brand-navy">
+                            <p className="text-sm font-medium text-brand-dark">
                                 {MONTH_NAMES[currentGoal.month - 1]} {currentGoal.year}
                             </p>
                         </div>
@@ -137,7 +137,7 @@ export default function ConfigurationPage() {
                                             min="0.01"
                                             value={editValue}
                                             onChange={(e) => { setEditValue(e.target.value); setEditError(null); }}
-                                            className="flex-1 min-w-0 rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/30 focus:border-brand-orange"
+                                            className="flex-1 min-w-0 rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary"
                                             autoFocus
                                         />
                                         <button
@@ -160,12 +160,12 @@ export default function ConfigurationPage() {
                                 </div>
                             ) : (
                                 <div className="flex items-center gap-2">
-                                    <p className="text-lg font-bold text-brand-navy">
+                                    <p className="text-lg font-bold text-brand-dark">
                                         ${currentGoal.goal_amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                     </p>
                                     <button
                                         onClick={() => handleStartEdit(currentGoal)}
-                                        className="shrink-0 p-1.5 rounded-lg text-slate-400 hover:text-brand-orange hover:bg-surface-page transition-colors"
+                                        className="shrink-0 p-1.5 rounded-lg text-slate-400 hover:text-brand-primary hover:bg-surface-page transition-colors"
                                     >
                                         <Pencil size={14} />
                                     </button>
@@ -184,7 +184,7 @@ export default function ConfigurationPage() {
                 className="chart-card"
             >
                 <div className="flex items-center justify-between gap-2 mb-4">
-                    <h2 className="text-sm sm:text-base font-bold text-brand-orange uppercase">Historial de Metas</h2>
+                    <h2 className="text-sm sm:text-base font-bold text-brand-primary uppercase">Historial de Metas</h2>
                 </div>
 
                 {loading && <p className="text-sm text-slate-500">Cargando...</p>}
@@ -207,9 +207,9 @@ export default function ConfigurationPage() {
                             <tbody>
                                 {sortedGoals.map((goal) => (
                                     <tr key={goal.id} className="border-b border-slate-50 hover:bg-surface-muted transition-colors">
-                                        <td className="py-3 px-4 sm:px-2 text-brand-navy font-medium whitespace-nowrap">{goal.year}</td>
+                                        <td className="py-3 px-4 sm:px-2 text-brand-dark font-medium whitespace-nowrap">{goal.year}</td>
                                         <td className="py-3 px-4 sm:px-2 text-slate-600 whitespace-nowrap">{MONTH_NAMES[goal.month - 1]}</td>
-                                        <td className="py-3 px-4 sm:px-2 text-right text-brand-navy font-medium whitespace-nowrap">
+                                        <td className="py-3 px-4 sm:px-2 text-right text-brand-dark font-medium whitespace-nowrap">
                                             ${goal.goal_amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                         </td>
                                     </tr>

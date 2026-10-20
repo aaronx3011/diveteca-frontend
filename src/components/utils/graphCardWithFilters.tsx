@@ -23,7 +23,7 @@ export default function GraphCardWithFilters({ title, subtitle, actions, graph, 
         >
             <div className="flex items-start justify-between mb-2 flex-shrink-0">
                 <div className="flex flex-col gap-0.5">
-                    <h3 className="text-sm font-bold text-brand-orange uppercase tracking-wider">
+                    <h3 className="text-sm font-bold text-brand-primary uppercase tracking-wider">
                         {title}
                     </h3>
                     {subtitle && (

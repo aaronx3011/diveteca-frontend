@@ -13,7 +13,7 @@ export default function IssueReportsPage() {
             transition={{ duration: 0.3 }}
             className="flex-1 overflow-y-auto p-4 lg:p-6"
         >
-            <h1 className="text-xl sm:text-2xl font-bold text-brand-navy mb-6">Reportar Problema</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-brand-dark mb-6">Reportar Problema</h1>
 
             <div className="space-y-6 max-w-3xl">
                 <IssueReportForm onSuccess={refetch} />

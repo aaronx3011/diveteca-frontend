@@ -64,7 +64,7 @@ export default function UserManagementPage() {
       transition={{ duration: 0.3 }}
       className="flex-1 overflow-y-auto p-4 lg:p-6 space-y-6"
     >
-      <h1 className="text-xl sm:text-2xl font-bold text-brand-navy">Gestión de Usuarios</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-brand-dark">Gestión de Usuarios</h1>
 
       {!isAdmin && (
         <motion.div
@@ -76,7 +76,7 @@ export default function UserManagementPage() {
           <div className="flex items-center gap-3 py-6">
             <ShieldBan size={24} className="text-slate-300" />
             <div>
-              <h2 className="text-sm font-semibold text-brand-navy">Sección restringida</h2>
+              <h2 className="text-sm font-semibold text-brand-dark">Sección restringida</h2>
               <p className="text-xs text-slate-400 mt-0.5">Solo los administradores pueden gestionar usuarios.</p>
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function UserManagementPage() {
             transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="kpi-card"
           >
-            <h2 className="text-sm sm:text-base font-bold text-brand-orange uppercase mb-4">Registrar Nuevo Usuario</h2>
+            <h2 className="text-sm sm:text-base font-bold text-brand-primary uppercase mb-4">Registrar Nuevo Usuario</h2>
 
             {error && (
               <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-sm text-red-600">{error}</div>
@@ -108,7 +108,7 @@ export default function UserManagementPage() {
                   type="text"
                   value={fullName}
                   onChange={e => setFullName(e.target.value)}
-                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
                   required
                 />
               </div>
@@ -118,7 +118,7 @@ export default function UserManagementPage() {
                   type="text"
                   value={username}
                   onChange={e => setUsername(e.target.value)}
-                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
                   required
                 />
               </div>
@@ -128,7 +128,7 @@ export default function UserManagementPage() {
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
                   required
                 />
               </div>
@@ -138,7 +138,7 @@ export default function UserManagementPage() {
                   type="password"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
                   required
                   minLength={6}
                 />
@@ -148,7 +148,7 @@ export default function UserManagementPage() {
                 <select
                   value={role}
                   onChange={e => setRole(e.target.value)}
-                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20 bg-white"
+                  className="w-full h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20 bg-white"
                 >
                   <option value="viewer">Viewer</option>
                   <option value="admin">Admin</option>
@@ -158,7 +158,7 @@ export default function UserManagementPage() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="w-full h-10 bg-brand-orange text-white rounded-lg text-sm font-semibold hover:bg-amber-500 transition-colors disabled:opacity-50"
+                  className="w-full h-10 bg-brand-primary text-white rounded-lg text-sm font-semibold hover:bg-amber-500 transition-colors disabled:opacity-50"
                 >
                   {saving ? 'Creando...' : 'Crear Usuario'}
                 </button>
@@ -173,7 +173,7 @@ export default function UserManagementPage() {
             transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="chart-card"
           >
-            <h2 className="text-sm sm:text-base font-bold text-brand-orange uppercase mb-4">Usuarios Registrados</h2>
+            <h2 className="text-sm sm:text-base font-bold text-brand-primary uppercase mb-4">Usuarios Registrados</h2>
 
             {loading ? (
               <p className="text-sm text-slate-500">Cargando...</p>
@@ -194,7 +194,7 @@ export default function UserManagementPage() {
                   <tbody>
                     {users.map((u) => (
                       <tr key={u.id} className="border-b border-slate-50 hover:bg-surface-muted transition-colors">
-                        <td className="py-3 px-4 sm:px-2 text-brand-navy font-medium whitespace-nowrap">{u.full_name}</td>
+                        <td className="py-3 px-4 sm:px-2 text-brand-dark font-medium whitespace-nowrap">{u.full_name}</td>
                         <td className="py-3 px-4 sm:px-2 text-slate-600 whitespace-nowrap">{u.username}</td>
                         <td className="py-3 px-4 sm:px-2 text-slate-600 whitespace-nowrap">{u.email}</td>
                         <td className="py-3 px-4 sm:px-2 whitespace-nowrap">

@@ -1,9 +1,11 @@
 export const brand = {
-    orange: '#898121',
-    orangeSecondary: '#6B7519',
-    orangeHover: '#7A8220',
-    navy: '#4C4B16',
-    navyLight: '#7b8c41',
+    primary: '#898121',
+    secondary: '#6B7519',
+    hover: '#7A8220',
+    dark: '#4C4B16',
+    darkLight: '#7b8c41',
+    primarySecondary: '#6B7519',
+    primaryHover: '#7A8220',
 } as const;
 
 export const accent = {

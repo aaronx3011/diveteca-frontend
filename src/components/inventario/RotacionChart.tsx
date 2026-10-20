@@ -22,7 +22,7 @@ export default function RotacionChart() {
             className="chart-card mb-4"
         >
             <div className="flex flex-col items-center gap-2 mb-4">
-                <h3 className="font-display text-xl font-bold text-brand-orange">
+                <h3 className="font-display text-xl font-bold text-brand-primary">
                     Rotacion por Producto
                 </h3>
                 <div className="flex items-center gap-3 text-sm text-slate-500">
@@ -31,7 +31,7 @@ export default function RotacionChart() {
                         value={month}
                         onChange={e => setMonth(e.target.value)}
                         className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs
-                       outline-none focus:ring-2 focus:ring-brand-orange/20 cursor-pointer"
+                       outline-none focus:ring-2 focus:ring-brand-primary/20 cursor-pointer"
                     >
                         <option value="">Elige un mes</option>
                         {MONTHS_LIST.map(m => <option key={m} value={m}>{m}</option>)}
@@ -40,7 +40,7 @@ export default function RotacionChart() {
                         value={year}
                         onChange={e => setYear(e.target.value)}
                         className="h-7 px-3 rounded-full border border-slate-200 bg-slate-50 text-xs
-                       outline-none focus:ring-2 focus:ring-brand-orange/20 cursor-pointer"
+                       outline-none focus:ring-2 focus:ring-brand-primary/20 cursor-pointer"
                     >
                         <option value="">Elige un año</option>
                         {YEARS.map(y => <option key={y} value={y}>{y}</option>)}

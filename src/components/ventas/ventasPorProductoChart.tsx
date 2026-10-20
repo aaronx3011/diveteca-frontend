@@ -68,7 +68,7 @@ export default function VentasPorProductoChart({ product, period, selectedProduc
                             {
                                 data: chartData.usd,
                                 label: 'Valor (USD)',
-                                color: brand.navy,
+                                color: brand.dark,
                                 showMark: false,
                                 area: true,
                                 curve: 'catmullRom',
@@ -76,7 +76,7 @@ export default function VentasPorProductoChart({ product, period, selectedProduc
                             {
                                 data: chartData.unidades,
                                 label: 'Unidades',
-                                color: brand.orangeSecondary,
+                                color: brand.primarySecondary,
                                 showMark: false,
                                 area: true,
                                 curve: 'catmullRom',
@@ -115,11 +115,11 @@ export default function VentasPorProductoChart({ product, period, selectedProduc
                     <div className='flex items-center justify-center'>
                         <div className="flex items-center gap-4">
                             <span className="flex items-center gap-1.5 text-xs text-slate-500">
-                                <span className="w-5 h-0.5 inline-block rounded" style={{ background: brand.navy }} />
+                                <span className="w-5 h-0.5 inline-block rounded" style={{ background: brand.dark }} />
                                 Valor
                             </span>
                             <span className="flex items-center gap-1.5 text-xs text-slate-500">
-                                <span className="w-5 h-0.5 inline-block rounded" style={{ background: brand.orangeSecondary }} />
+                                <span className="w-5 h-0.5 inline-block rounded" style={{ background: brand.primarySecondary }} />
                                 Unidades
                             </span>
                         </div>

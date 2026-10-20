@@ -96,5 +96,5 @@ export async function apiClient<T = unknown>(
     throw new ApiError(response.status, originalMessage || response.statusText);
   }
 
-  return response.json();
+  return body as T;
 }

@@ -7,7 +7,7 @@ import { ClientePorProducto } from '../../types/ventas'
 import { chart, brand } from '../../config/colors'
 
 const TOP_COLORS = chart.topProducts
-const OTHERS_COLOR = brand.orange
+const OTHERS_COLOR = brand.primary
 
 interface Props {
     data: ClientePorProducto[];

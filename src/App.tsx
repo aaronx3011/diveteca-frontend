@@ -1,8 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth, AuthProvider } from './contexts/AuthContext'
+import { ToastProvider } from './contexts/ToastContext'
+import { HealthProvider } from './contexts/HealthContext'
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
+import DegradedBanner from './components/system/DegradedBanner'
+import ToastContainer from './components/system/ToastContainer'
 import SummaryPage from './pages/SummaryPage'
 
 import VentasPage from './pages/VentasPage'
@@ -30,7 +34,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-surface-page">
-        <div className="animate-spin w-8 h-8 border-2 border-brand-orange border-t-transparent rounded-full" />
+        <div className="animate-spin w-8 h-8 border-2 border-brand-primary border-t-transparent rounded-full" />
       </div>
     )
   }
@@ -48,7 +52,7 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-surface-page">
-        <div className="animate-spin w-8 h-8 border-2 border-brand-orange border-t-transparent rounded-full" />
+        <div className="animate-spin w-8 h-8 border-2 border-brand-primary border-t-transparent rounded-full" />
       </div>
     )
   }
@@ -65,12 +69,14 @@ function DashboardLayout() {
   const { logout } = useAuth()
 
   return (
-    <div className="flex h-screen overflow-hidden bg-surface-page">
-      <Sidebar onLogout={logout} isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <div className="flex flex-col flex-1 min-w-0">
-        <Topbar onToggleSidebar={() => setSidebarOpen(prev => !prev)} />
-        <div className="flex-1 overflow-hidden flex flex-col">
-          <Routes>
+    <HealthProvider>
+      <div className="flex h-screen overflow-hidden bg-surface-page">
+        <Sidebar onLogout={logout} isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <div className="flex flex-col flex-1 min-w-0">
+          <Topbar onToggleSidebar={() => setSidebarOpen(prev => !prev)} />
+          <DegradedBanner />
+          <div className="flex-1 overflow-hidden flex flex-col">
+            <Routes>
             <Route path="/" element={<SummaryPage />} />
 
             <Route path="/ventas" element={<VentasPage />} />
@@ -97,6 +103,8 @@ function DashboardLayout() {
         </div>
       </div>
     </div>
+    <ToastContainer />
+  </HealthProvider>
   )
 }
 
@@ -114,7 +122,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <AppRoutes />
+        <ToastProvider>
+          <AppRoutes />
+        </ToastProvider>
       </AuthProvider>
     </BrowserRouter>
   )

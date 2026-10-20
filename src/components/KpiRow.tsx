@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import AmountCard from './utils/amountCard'
 import ProuctCard from './utils/productCard'
 import { useVentasAnuales } from '../hooks/useVentasAnuales'
-import { useAnalisisReposicion } from '../hooks/useAnalisisReposicion'
+import { useVentasProductos } from '../hooks/useVentasProducto'
 import { useTotalInventario } from '../hooks/useTotalInventario'
 import { formatNumber } from '../utils/formatters'
 import { component } from '../config/colors'
@@ -14,6 +14,11 @@ const cardVariants = {
         y: 0,
         transition: { delay: i * 0.08, duration: 0.45, ease: [0.22, 1, 0.36, 1] },
     }),
+}
+
+function toFiniteNumber(value: unknown): number {
+    const number = Number(value)
+    return Number.isFinite(number) ? number : 0
 }
 
 export default function KpiRow() {
@@ -38,9 +43,12 @@ export default function KpiRow() {
     // Fetch inventory totals from aggregate endpoint
     const {
         data: totalInvData,
+        metadata: inventoryMetadata,
         isLoading: invLoading,
         error: invError
     } = useTotalInventario()
+
+    const { data: productSales, isLoading: productsLoading } = useVentasProductos()
 
     if (ventasLoading || invLoading || lastYearLoading) {
         return <div className="p-4 text-slate-400">Cargando KPIs...</div>
@@ -53,19 +61,26 @@ export default function KpiRow() {
     const ventasTotals = ventasData?.totals;
     const lastYearTotals = ventasLastYearData?.totals;
 
-    const valorTotalInventarioUSD = totalInvData?.Valor_Total_Venta_USD || 0;
-    const totalUnidadesInventario = totalInvData?.Total_Unidades_Fisicas || 0;
+    const valorTotalInventarioUSD = toFiniteNumber(totalInvData?.Valor_Total_Venta_USD);
+    const totalUnidadesInventario = toFiniteNumber(totalInvData?.Total_Unidades_Fisicas);
 
     // Calculate your monthly average (Last Year Total USD / 12)
-    const promedioVentaMensualUSD = lastYearTotals ? (lastYearTotals.Total_USD / 12) : 0;
-    const promedioVentaMensualUnidades = lastYearTotals ? Math.round(lastYearTotals.Total_Unidades / 12) : 0;
+    const promedioVentaMensualUSD = toFiniteNumber(lastYearTotals?.Total_USD) / 12;
+    const promedioVentaMensualUnidades = Math.round(toFiniteNumber(lastYearTotals?.Total_Unidades) / 12);
+
+    const topProduct = productSales
+        .filter(product => toFiniteNumber(product.Total_USD) > 0)
+        .sort((left, right) => toFiniteNumber(right.Total_USD) - toFiniteNumber(left.Total_USD))[0];
+    const topProductName = topProduct
+        ? topProduct.Descripcion_Articulo || topProduct.Ref_Articulo || topProduct.Codigo_Articulo
+        : productsLoading ? 'Cargando...' : 'Sin ventas registradas';
 
     const kpiData = [
         {
             type: 'amount',
             label: 'Unidades vendidas durante el año',
-            value: ventasTotals ? ventasTotals.Total_USD.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0',
-            units: ventasTotals ? formatNumber(ventasTotals.Total_Unidades) : '0'
+            value: toFiniteNumber(ventasTotals?.Total_USD).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+            units: formatNumber(toFiniteNumber(ventasTotals?.Total_Unidades))
         },
         {
             type: 'amount',
@@ -82,14 +97,19 @@ export default function KpiRow() {
         {
             type: 'product',
             label: 'Top Product',
-            value: 'ALBUMINA HUMANA (OCT) 20% SOL. 50 ML',
-            units: '600000'
+            value: topProductName,
         }
     ];
 
     return (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
-            {kpiData.map((kpi, i) => (
+        <>
+            {inventoryMetadata?.possiblyTruncated && (
+                <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+                    El KPI de inventario puede estar incompleto porque el reporte alcanzó {inventoryMetadata.rowLimit.toLocaleString('en-US')} registros.
+                </div>
+            )}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
+                {kpiData.map((kpi, i) => (
                 <motion.div
                     key={i}
                     custom={i}
@@ -112,7 +132,8 @@ export default function KpiRow() {
                         />
                     )}
                 </motion.div>
-            ))}
-        </div>
+                ))}
+            </div>
+        </>
     )
 }

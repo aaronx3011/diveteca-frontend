@@ -62,7 +62,7 @@ export default function IssueReportForm({ onSuccess }: { onSuccess: () => void }
 
     return (
         <form onSubmit={handleSubmit} className="chart-card">
-            <h2 className="text-sm sm:text-base font-bold text-brand-orange uppercase mb-4">Reportar un Problema</h2>
+            <h2 className="text-sm sm:text-base font-bold text-brand-primary uppercase mb-4">Reportar un Problema</h2>
 
             {error && (
                 <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700">
@@ -83,7 +83,7 @@ export default function IssueReportForm({ onSuccess }: { onSuccess: () => void }
                         type="text"
                         value={reporterName}
                         onChange={e => setReporterName(e.target.value)}
-                        className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/30 focus:border-brand-orange bg-slate-50 text-slate-600 cursor-not-allowed"
+                        className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary bg-slate-50 text-slate-600 cursor-not-allowed"
                         placeholder="Tu nombre"
                         readOnly
                     />
@@ -94,7 +94,7 @@ export default function IssueReportForm({ onSuccess }: { onSuccess: () => void }
                         type="email"
                         value={reporterEmail}
                         onChange={e => setReporterEmail(e.target.value)}
-                        className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/30 focus:border-brand-orange bg-slate-50 text-slate-600 cursor-not-allowed"
+                        className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary bg-slate-50 text-slate-600 cursor-not-allowed"
                         placeholder="tu@correo.com"
                         readOnly
                     />
@@ -107,7 +107,7 @@ export default function IssueReportForm({ onSuccess }: { onSuccess: () => void }
                     type="text"
                     value={title}
                     onChange={e => setTitle(e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/30 focus:border-brand-orange"
+                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary"
                     placeholder="Resumen del problema"
                 />
             </div>
@@ -122,8 +122,8 @@ export default function IssueReportForm({ onSuccess }: { onSuccess: () => void }
                             onClick={() => setSeverity(s)}
                             className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
                                 severity === s
-                                    ? 'bg-brand-orange text-white border-brand-orange'
-                                    : 'bg-white text-slate-600 border-slate-200 hover:border-brand-orange'
+                                    ? 'bg-brand-primary text-white border-brand-primary'
+                                    : 'bg-white text-slate-600 border-slate-200 hover:border-brand-primary'
                             }`}
                         >
                             {s}
@@ -138,7 +138,7 @@ export default function IssueReportForm({ onSuccess }: { onSuccess: () => void }
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                     rows={4}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange/30 focus:border-brand-orange resize-none"
+                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary resize-none"
                     placeholder="Describe el problema en detalle..."
                 />
             </div>
@@ -146,7 +146,7 @@ export default function IssueReportForm({ onSuccess }: { onSuccess: () => void }
             <button
                 type="submit"
                 disabled={submitting}
-                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-brand-orange text-white text-sm font-medium hover:bg-amber-500 transition-colors disabled:opacity-50"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-brand-primary text-white text-sm font-medium hover:bg-amber-500 transition-colors disabled:opacity-50"
             >
                 {submitting ? 'Enviando...' : 'Enviar Reporte'}
             </button>

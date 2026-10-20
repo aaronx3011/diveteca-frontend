@@ -104,12 +104,12 @@ export default function VentasPorProducto({ selectedProduct, onSelectProduct, ve
                         minWidth: 'auto',
                         p: '4px',
                         borderRadius: '8px',
-                        backgroundColor: selectedProduct === params.row.Codigo_Articulo ? brand.orange : 'transparent',
-                        borderColor: selectedProduct === params.row.Codigo_Articulo ? brand.orange : slate[200],
+                        backgroundColor: selectedProduct === params.row.Codigo_Articulo ? brand.primary : 'transparent',
+                        borderColor: selectedProduct === params.row.Codigo_Articulo ? brand.primary : slate[200],
                         color: selectedProduct === params.row.Codigo_Articulo ? surface.white : slate[500],
                         '&:hover': {
-                            backgroundColor: selectedProduct === params.row.Codigo_Articulo ? brand.orangeHover : table.cellBorder,
-                            borderColor: selectedProduct === params.row.Codigo_Articulo ? brand.orangeHover : slate[300],
+                            backgroundColor: selectedProduct === params.row.Codigo_Articulo ? brand.primaryHover : table.cellBorder,
+                            borderColor: selectedProduct === params.row.Codigo_Articulo ? brand.primaryHover : slate[300],
                         }
                     }}
                 >
@@ -135,7 +135,7 @@ export default function VentasPorProducto({ selectedProduct, onSelectProduct, ve
             className="chart-card mb-4 h-full flex flex-col"
         >
                 <div className="flex items-center justify-between mb-3">
-                    <h2 className="uppercase font-display text-2xl font-bold text-brand-navy text-left">
+                    <h2 className="uppercase font-display text-2xl font-bold text-brand-dark text-left">
                         Ventas por Producto
                     </h2>
                     <div className="flex items-center gap-1">
@@ -156,7 +156,7 @@ export default function VentasPorProducto({ selectedProduct, onSelectProduct, ve
                                 backgroundColor: surface.white,
                                 borderRadius: '10px',
                                 border: `1px solid ${table.paperBorder}`,
-                                '&:focus-within': { borderColor: brand.orange }
+                                '&:focus-within': { borderColor: brand.primary }
                             }}
                         >
                             <Search size={16} color={search.iconColor} style={{ marginRight: '8px' }} />

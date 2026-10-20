@@ -32,7 +32,7 @@ export default function MonthlySalesChart() {
         ? `${MONTH_NAMES[lastMonth.Mes - 1]} ${lastMonth.Anio}`
         : '';
 
-    const gaugeColor = currentK >= goalK ? status.success : brand.navy;
+    const gaugeColor = currentK >= goalK ? status.success : brand.dark;
 
     return (
         <GraphCard

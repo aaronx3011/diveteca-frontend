@@ -28,7 +28,7 @@ export default function IssueReportList({ reports, onRefresh }: { reports: Issue
     if (reports.length === 0) {
         return (
             <div className="chart-card">
-                <h2 className="text-sm sm:text-base font-bold text-brand-orange uppercase mb-4">Historial de Reportes</h2>
+                <h2 className="text-sm sm:text-base font-bold text-brand-primary uppercase mb-4">Historial de Reportes</h2>
                 <p className="text-sm text-slate-400 text-center py-8">No hay reportes enviados</p>
             </div>
         );
@@ -49,7 +49,7 @@ export default function IssueReportList({ reports, onRefresh }: { reports: Issue
 
     return (
         <div className="chart-card">
-            <h2 className="text-sm sm:text-base font-bold text-brand-orange uppercase mb-4">Historial de Reportes</h2>
+            <h2 className="text-sm sm:text-base font-bold text-brand-primary uppercase mb-4">Historial de Reportes</h2>
             <div className="-mx-5 sm:mx-0 overflow-x-auto">
                 <table className="w-full text-sm">
                     <thead>
@@ -68,7 +68,7 @@ export default function IssueReportList({ reports, onRefresh }: { reports: Issue
                                 <td className="py-3 px-1">
                                     <button
                                         onClick={() => toggleExpand(report.id)}
-                                        className="p-0.5 rounded text-slate-400 hover:text-brand-navy transition-colors"
+                                        className="p-0.5 rounded text-slate-400 hover:text-brand-dark transition-colors"
                                     >
                                         {expandedId === report.id ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
                                     </button>
@@ -80,7 +80,7 @@ export default function IssueReportList({ reports, onRefresh }: { reports: Issue
                                         day: '2-digit',
                                     })}
                                 </td>
-                                <td className="py-3 px-4 sm:px-2 text-brand-navy font-medium whitespace-nowrap max-w-[200px] truncate">
+                                <td className="py-3 px-4 sm:px-2 text-brand-dark font-medium whitespace-nowrap max-w-[200px] truncate">
                                     {report.title}
                                 </td>
                                 <td className="py-3 px-4 sm:px-2 text-slate-600 whitespace-nowrap text-xs">
@@ -95,7 +95,7 @@ export default function IssueReportList({ reports, onRefresh }: { reports: Issue
                                     <select
                                         value={report.status}
                                         onChange={e => handleStatusChange(report.id, e.target.value)}
-                                        className={`text-xs font-medium rounded-lg border-0 px-2 py-1 cursor-pointer focus:ring-2 focus:ring-brand-orange/30 ${STATUS_STYLES[report.status]?.color ?? 'bg-slate-100 text-slate-600'}`}
+                                        className={`text-xs font-medium rounded-lg border-0 px-2 py-1 cursor-pointer focus:ring-2 focus:ring-brand-primary/30 ${STATUS_STYLES[report.status]?.color ?? 'bg-slate-100 text-slate-600'}`}
                                     >
                                         {STATUS_OPTIONS.map(opt => (
                                             <option key={opt.value} value={opt.value}>{opt.label}</option>

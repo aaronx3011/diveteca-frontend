@@ -34,7 +34,7 @@ export default function PatchNotesList({ notes }: { notes: PatchNote[] }) {
                             </div>
                             <span className="text-xs text-slate-400 whitespace-nowrap">{date}</span>
                         </div>
-                        <h3 className="text-sm font-bold text-brand-navy mb-1">{note.title}</h3>
+                        <h3 className="text-sm font-bold text-brand-dark mb-1">{note.title}</h3>
                         <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-line">{note.content}</p>
                     </div>
                 );

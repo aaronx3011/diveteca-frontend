@@ -21,7 +21,7 @@ export default function GraphCard({ titlle, subtitle, graph, legend, legendOrien
         >
             {/* Header section */}
             <div className="flex-shrink-0 flex items-start justify-between mb-2 min-h-0 flex-col gap-0.5">
-                <h3 className="text-l font-bold text-brand-orange uppercase">
+                <h3 className="text-l font-bold text-brand-primary uppercase">
                     {titlle}
                 </h3>
                 {subtitle && (

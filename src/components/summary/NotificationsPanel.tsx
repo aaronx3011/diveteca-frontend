@@ -117,7 +117,7 @@ function SinStockBadge() {
 function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: boolean) => void; label: string }) {
     return (
         <button onClick={() => onChange(!checked)} className="flex items-center gap-2 group">
-            <div className={`relative w-8 h-4 rounded-full transition-colors duration-200 ${checked ? 'bg-brand-orange' : 'bg-slate-200'}`}>
+            <div className={`relative w-8 h-4 rounded-full transition-colors duration-200 ${checked ? 'bg-brand-primary' : 'bg-slate-200'}`}>
                 <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow-sm transition-transform duration-200 ${checked ? 'translate-x-4' : 'translate-x-0.5'}`} />
             </div>
             <span className="text-[11px] text-slate-500 font-medium group-hover:text-slate-700 transition-colors select-none">
@@ -446,7 +446,7 @@ export default function NotificationsPanel() {
                             className="relative bg-white rounded-2xl p-6 w-full max-w-md mx-auto shadow-xl overflow-y-auto max-h-[90vh]"
                         >
                             <div className="flex items-center justify-between mb-5">
-                                <h2 className="text-lg font-bold text-brand-navy">Detalle del Producto</h2>
+                                <h2 className="text-lg font-bold text-brand-dark">Detalle del Producto</h2>
                                 <button onClick={() => setSelectedItem(null)} className="p-1.5 rounded-lg hover:bg-surface-page text-slate-400 transition-colors">
                                     <X size={20} />
                                 </button>
@@ -516,7 +516,7 @@ export default function NotificationsPanel() {
                             </div>
 
                             <div className="mt-6">
-                                <h3 className="text-sm font-bold text-brand-navy uppercase tracking-wider mb-3">
+                                <h3 className="text-sm font-bold text-brand-dark uppercase tracking-wider mb-3">
                                     Lotes ({lotRows.length})
                                 </h3>
                                 {lotsLoading ? (
@@ -553,7 +553,7 @@ export default function NotificationsPanel() {
 
                             <button
                                 onClick={() => setSelectedItem(null)}
-                                className="w-full mt-6 px-4 py-2.5 rounded-xl bg-brand-orange text-white text-sm font-medium hover:bg-amber-500 transition-colors"
+                                className="w-full mt-6 px-4 py-2.5 rounded-xl bg-brand-primary text-white text-sm font-medium hover:bg-amber-500 transition-colors"
                             >
                                 Cerrar
                             </button>

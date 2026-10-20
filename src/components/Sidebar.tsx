@@ -144,7 +144,7 @@ export default function Sidebar({ onLogout, isOpen, onClose }: { onLogout: () =>
                                                 end={sub.path === path}
                                                 onClick={onClose}
                                                 className={({ isActive }) =>
-                                                    `block py-2 px-3 text-xs rounded-lg transition-colors ${isActive ? 'text-brand-navy font-bold bg-surface-muted' : 'text-slate-500 hover:text-brand-navy hover:bg-surface-muted hover:font-semibold'}`
+                                                    `block py-2 px-3 text-xs rounded-lg transition-colors ${isActive ? 'text-brand-dark font-bold bg-surface-muted' : 'text-slate-500 hover:text-brand-dark hover:bg-surface-muted hover:font-semibold'}`
                                                 }
                                             >
                                                 {sub.label}
@@ -163,7 +163,7 @@ export default function Sidebar({ onLogout, isOpen, onClose }: { onLogout: () =>
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 className="m-3 mt-0 flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer
-                   text-sm font-medium text-brand-navy border border-slate-100
+                   text-sm font-medium text-brand-dark border border-slate-100
                    hover:bg-surface-page transition-colors"
                 onClick={onLogout}
             >

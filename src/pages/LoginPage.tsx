@@ -71,7 +71,7 @@ export default function LoginPage() {
           placeholder="Usuario"
           value={username}
           onChange={e => setUsername(e.target.value)}
-          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
           required
         />
         <input
@@ -79,21 +79,21 @@ export default function LoginPage() {
           placeholder="Contraseña"
           value={password}
           onChange={e => setPassword(e.target.value)}
-          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
           required
         />
 
         <button
           type="submit"
           disabled={loading}
-          className="h-10 bg-brand-orange text-white rounded-lg text-sm font-semibold hover:bg-amber-500 transition-colors disabled:opacity-50"
+          className="h-10 bg-brand-primary text-white rounded-lg text-sm font-semibold hover:bg-amber-500 transition-colors disabled:opacity-50"
         >
           {loading ? 'Ingresando...' : 'Iniciar sesión'}
         </button>
 
         <p className="text-xs text-slate-400 text-center">
           ¿No tienes cuenta?{' '}
-          <Link to="/signup" className="text-brand-orange hover:underline">
+          <Link to="/signup" className="text-brand-primary hover:underline">
             Registrarse
           </Link>
         </p>

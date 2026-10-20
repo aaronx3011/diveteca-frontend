@@ -51,7 +51,7 @@ export default function SignUpPage() {
           placeholder="Nombre completo"
           value={fullName}
           onChange={e => setFullName(e.target.value)}
-          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
           required
         />
         <input
@@ -59,7 +59,7 @@ export default function SignUpPage() {
           placeholder="Usuario"
           value={username}
           onChange={e => setUsername(e.target.value)}
-          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
           required
         />
         <input
@@ -67,7 +67,7 @@ export default function SignUpPage() {
           placeholder="Correo electrónico"
           value={email}
           onChange={e => setEmail(e.target.value)}
-          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
           required
         />
         <input
@@ -75,7 +75,7 @@ export default function SignUpPage() {
           placeholder="Contraseña"
           value={password}
           onChange={e => setPassword(e.target.value)}
-          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
           required
           minLength={6}
         />
@@ -84,7 +84,7 @@ export default function SignUpPage() {
           placeholder="Confirmar contraseña"
           value={confirmPassword}
           onChange={e => setConfirmPassword(e.target.value)}
-          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-orange/20"
+          className="h-10 px-4 rounded-lg border border-slate-200 text-sm outline-none focus:ring-2 focus:border-transparent focus:ring-brand-primary/20"
           required
           minLength={6}
         />
@@ -92,14 +92,14 @@ export default function SignUpPage() {
         <button
           type="submit"
           disabled={loading}
-          className="h-10 bg-brand-orange text-white rounded-lg text-sm font-semibold hover:bg-amber-500 transition-colors disabled:opacity-50"
+          className="h-10 bg-brand-primary text-white rounded-lg text-sm font-semibold hover:bg-amber-500 transition-colors disabled:opacity-50"
         >
           {loading ? 'Registrando...' : 'Crear cuenta'}
         </button>
 
         <p className="text-xs text-slate-400 text-center">
           ¿Ya tienes cuenta?{' '}
-          <Link to="/login" className="text-brand-orange hover:underline">
+          <Link to="/login" className="text-brand-primary hover:underline">
             Inicia sesión
           </Link>
         </p>

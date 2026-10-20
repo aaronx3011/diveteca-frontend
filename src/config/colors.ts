@@ -1,1 +1,1 @@
-export * from './colors.gold'
+export * from './colors.olive'

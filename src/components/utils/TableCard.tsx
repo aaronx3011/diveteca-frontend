@@ -20,7 +20,7 @@ export default function TableCard({ title, subtitle, graph, legend, legendOrient
             className="chart-card flex flex-col h-full w-full"
         >
             <div className="flex-[1] flex items-start justify-between min-h-0 flex-col gap-0.5">
-                <h3 className="text-l font-bold text-brand-orange uppercase">
+                <h3 className="text-l font-bold text-brand-primary uppercase">
                     {title}
                 </h3>
                 {subtitle && (

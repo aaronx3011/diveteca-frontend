@@ -153,7 +153,7 @@ export default function CuentasPorCobrarPage() {
                 className="chart-card mb-4"
             >
                 <div className="flex items-start justify-between mb-4">
-                    <h2 className="uppercase font-display text-xl lg:text-2xl font-bold text-brand-navy text-left">
+                    <h2 className="uppercase font-display text-xl lg:text-2xl font-bold text-brand-dark text-left">
                         Cuentas por Cobrar
                     </h2>
                     <div className="flex items-center gap-1 flex-shrink-0">
@@ -263,7 +263,7 @@ export default function CuentasPorCobrarPage() {
                                 <p className="text-xs text-slate-400 uppercase tracking-wide">Saldo total</p>
                                 <p className="text-xs text-slate-400">— {tableRows.length} documentos</p>
                             </div>
-                            <p className="text-xl font-bold text-brand-navy">
+                            <p className="text-xl font-bold text-brand-dark">
                                 ${formatCompact(totalSaldo)}
                             </p>
                         </div>
